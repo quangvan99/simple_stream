@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .error { color: red; }
+      .video-placeholder {
+          width: 500px; /* Thiết lập chiều rộng */
+          height: 300px; /* Thiết lập chiều cao */
+          background: #000; /* Màu nền tối */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 20px;
+        }
+    </style>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="webrtc.js"></script>
+    <script>
+      window.onload = websocketServerConnect;
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- <div id="video" class="mb-4"></div> -->
+      <div id="video" class="video-placeholder mb-4"></div>
+      <div class="status mb-2">Status: <span id="status">unknown</span></div>
+
+      <div class="form-group">
+        <label for="peer-connect">Enter peer id</label>
+        <input id="peer-connect" class="form-control" type="text" name="text" onkeypress="onTextKeyPress();" required>
+      </div>
+
+      <button id="peer-connect-button" class="btn btn-primary" onclick="onConnectClicked();">Connect</button>
+      <div class="custom-control custom-checkbox mb-4">
+        <input id="remote-offerer" type="checkbox" class="custom-control-input" autocomplete="off" checked>
+        <label class="custom-control-label" for="remote-offerer">Remote offerer</label>
+      </div>
+
+      <div class="mb-3">Our id is <b id="peer-id">unknown</b></div>
+
+      <div class="form-group">
+        <div>getUserMedia constraints being used:</div>
+        <textarea id="constraints" class="form-control" cols="40" rows="4"></textarea>
+      </div>
+    </div>
+  </body>
+</html>
